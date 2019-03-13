@@ -71,20 +71,22 @@ class App extends Component {
   }
 
   handleStopButton = async () => {
-    await this.setStateAsync({ isButtonDisabled: true })
-    await delay(config.T1)
-    await this.setStateAsync({ value: 2 })
-    this.updateLight()
-    await delay(config.T2)
-    await this.setStateAsync({ value: 3 })
-    this.updateLight()
-    await delay(config.T3)
-    await this.setStateAsync({ value: 4 })
-    this.updateLight()
-    await delay(config.T4)
-    await this.setStateAsync({ value: 1 })
-    this.updateLight()
-    await this.setStateAsync({ isButtonDisabled: false })
+    if (!this.state.isButtonDisabled) {
+      await this.setStateAsync({ isButtonDisabled: true })
+      await delay(config.T1)
+      await this.setStateAsync({ value: 2 })
+      this.updateLight()
+      await delay(config.T2)
+      await this.setStateAsync({ value: 3 })
+      this.updateLight()
+      await delay(config.T3)
+      await this.setStateAsync({ value: 4 })
+      this.updateLight()
+      await delay(config.T4)
+      await this.setStateAsync({ value: 1 })
+      this.updateLight()
+      await this.setStateAsync({ isButtonDisabled: false })
+    }
   }
 
   setStateAsync (state) {
